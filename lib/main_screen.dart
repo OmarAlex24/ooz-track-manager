@@ -44,16 +44,6 @@ class _MainScreenState extends State<MainScreen> {
   bool _settingsReady = false;
   bool _controllerReady = false;
 
-  InAppWebViewSettings settings = InAppWebViewSettings(
-    javaScriptEnabled: true,
-    useShouldOverrideUrlLoading: true,
-    supportMultipleWindows: false,
-    // Disable zooming
-    supportZoom: false,
-    builtInZoomControls: false,
-    displayZoomControls: false,
-  );
-
   @override
   void initState() {
     super.initState();
@@ -289,7 +279,14 @@ class _MainScreenState extends State<MainScreen> {
           child: InAppWebView(
             key: ValueKey(_initialUrl),
             initialUrlRequest: URLRequest(url: WebUri(_initialUrl)),
-            initialSettings: settings,
+            initialSettings: InAppWebViewSettings(
+              javaScriptEnabled: true,
+              useShouldOverrideUrlLoading: true,
+              supportMultipleWindows: false,
+              supportZoom: false,
+              builtInZoomControls: false,
+              displayZoomControls: false,
+            ),
             initialUserScripts: UnmodifiableListView<UserScript>([
               UserScript(
                 source: '''
