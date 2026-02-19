@@ -282,7 +282,6 @@ class _MainScreenState extends State<MainScreen> {
             initialSettings: InAppWebViewSettings(
               javaScriptEnabled: true,
               useShouldOverrideUrlLoading: true,
-              supportMultipleWindows: false,
               supportZoom: false,
               builtInZoomControls: false,
               displayZoomControls: false,
