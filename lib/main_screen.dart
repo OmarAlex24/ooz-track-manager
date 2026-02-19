@@ -282,6 +282,8 @@ class _MainScreenState extends State<MainScreen> {
             initialSettings: InAppWebViewSettings(
               javaScriptEnabled: true,
               useShouldOverrideUrlLoading: true,
+              supportZoom: false,
+              builtInZoomControls: false,
             ),
             initialUserScripts: UnmodifiableListView<UserScript>([
               UserScript(
