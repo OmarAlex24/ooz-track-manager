@@ -284,7 +284,6 @@ class _MainScreenState extends State<MainScreen> {
               useShouldOverrideUrlLoading: true,
               supportZoom: false,
               builtInZoomControls: false,
-              displayZoomControls: false,
             ),
             initialUserScripts: UnmodifiableListView<UserScript>([
               UserScript(
