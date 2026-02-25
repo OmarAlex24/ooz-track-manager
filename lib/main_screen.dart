@@ -15,9 +15,9 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences_android/shared_preferences_android.dart';
-import 'package:traccar_manager/error_screen.dart';
-import 'package:traccar_manager/main.dart';
-import 'package:traccar_manager/token_store.dart';
+import 'package:ooz_track_manager/error_screen.dart';
+import 'package:ooz_track_manager/main.dart';
+import 'package:ooz_track_manager/token_store.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MainScreen extends StatefulWidget {
@@ -56,7 +56,7 @@ class _MainScreenState extends State<MainScreen> {
     await _initialized.future;
     _appLinks = AppLinks();
     _appLinksSubscription = _appLinks.uriLinkStream.listen((uri) {
-      if (uri.scheme == 'org.traccar.manager') {
+      if (uri.scheme == 'mx.ooz.track.manager') {
         final baseUri = Uri.parse(_getUrl());
         final appPathSegments = [uri.host, ...uri.pathSegments];
         final updatedQueryParameters = Map<String, String>.from(uri.queryParameters)
@@ -80,7 +80,7 @@ class _MainScreenState extends State<MainScreen> {
       final originalRedirect = Uri.parse(uri.queryParameters['redirect_uri']!);
       final redirectSegments = originalRedirect.pathSegments;
       final updatedRedirect = Uri(
-        scheme: 'org.traccar.manager',
+        scheme: 'mx.ooz.track.manager',
         host: redirectSegments.first,
         path: '/${redirectSegments.skip(1).join('/')}',
         queryParameters: originalRedirect.queryParameters.isEmpty ? null : originalRedirect.queryParameters,
@@ -100,7 +100,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   String _getUrl() {
-    return _preferences.getString(_urlKey) ?? 'https://demo.traccar.org';
+    return _preferences.getString(_urlKey) ?? 'https://track.ooz.mx';
   }
 
   bool _isDownloadable(Uri uri) {
